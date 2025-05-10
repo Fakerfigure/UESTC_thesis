@@ -1,60 +1,25 @@
-<div align="center">
-<strong>
-<samp>
-
-如有疑问/建议, 欢迎在 [模板issues](https://github.com/qujihan/uestc-typst-thesis-example/issues) / [示例issues](https://github.com/qujihan/uestc-typst-thesis-example/issues) 中进行反馈
-
-</samp>
-</strong>
-</div>
-
-
 # 📚电子科技大学学位论文Typst模板实例-binbin
-[![下载最新版本](https://img.shields.io/badge/%E7%82%B9%E8%BF%99%E9%87%8C-%E4%B8%8B%E8%BD%BDrelease%E7%89%88%E6%9C%AC-red.svg "下载最新版本")](https://nightly.link/qujihan/uestc-typst-thesis-example/workflows/ci/main/thesis.zip)
+## 摘要
+大型语言模型（LLM）的性能提升对高质量训练数据有着极高的依赖度。然而，当前 LLM 训练却面临着严峻的数据供给危机。这一危机源于多重矛盾：模型容量扩张呈指数级需求，而全球数字化文本年增量仅为线性增长；网络文本存在噪声干扰、语义偏见及标注缺失等问题，数据清洗需耗费大量算力；训练集过度依赖网页内容，专业领域语料占比不足 。
 
-各位同学可以在本仓库的基础上进行修改.
+针对上述问题，本文提出了一种基于检索增强生成（RAG）技术的自动化问答数据集生成框架 MiniRAG-QAG。该框架旨在通过 “数据合成 - 质量验证 - 反馈优化” 的闭环机制，突破传统数据采集的物理限制，为 LLM 训练提供高效、合规的高质量数据源。
+在具体实现上，本研究聚焦三大核心内容。其一，设计了一种融合动态分块与混合检索策略的 RAG 增强框架。通过分层语义切分，即段落级与内容类型级切分，以及混合检索模型，将 BGE-M3 向量检索与 BM25 关键词检索加权结合，并利用 BGE-Reranker 进行相关性重排序，显著提升了知识检索的准确性与上下文适配性。其二，构建了一套全面的多维度评估体系，涵盖相关性、不可知性、完整性、准确性与合理性等维度。同时，创新性地引入动态阈值计算与证据覆盖度量化方法，有效解决了传统评估模型过度依赖人工标注的问题。实验表明，MiniRAG-QAG 在 UTD24 数据集上表现卓越，生成问答对综合得分达到 0.7427，显著优于主流模型。其中，准确性为 0.6935，较次优模型提升 9.37%。此外，本研究基于 17542 篇经管领域学术文献构建了 UTD24_QA 数据集，包含 170226 组QA数据，并配套建立了评测基准 UTD24_QA_5k-benchmark，填补了 LLM 在经济与管理专业领域数据集的空白。
 
-模板本着内容于样式分离的原则, 本仓库基本除了内容不包含任何样式代码.
-
-> [!IMPORTANT]  
-> 本仓库是一个模板仓库, 在[Github主页](https://github.com/qujihan/uestc-typst-thesis-example)右上角可以看到一个 `Use this template` 按钮, 可以直接使用本仓库作为模板创建一个新的仓库.
-
+为推动技术落地应用，本研究还开发了一体式 QAG 系统。该系统集成 Streamlit 与 LangChain 技术栈，实现了全流程可视化操作。系统支持文献智能解析、动态参数配置、多模型协同生成与数据集版本管理，并通过元数据驱动架构保障了数据流的可追溯性。这一成果不仅为医疗、金融等数据敏感领域提供了合规化数据生成方案，更通过 “以模型养模型” 的范式创新，为人工智能从 “数据依赖型” 向 “智能内生型” 演进提供了可行的技术路径。
 # Quick Start
 ```shell
-# 如果想尝试一下就下载这个
-git clone https://github.com/qujihan/uestc-typst-thesis-example.git thesis
-# 如果想使用Fork的仓库
-git clone https://github.com/YOUR-NAME/uestc-typst-thesis-example.git
-
 cd thesis; 
 git submodule update --init --recursive
 
-# 生成一个名为 学位论文写作指南及例子.pdf 的文件
+# 生成一个pdf的文件
 # 可以在 makefile 中修改生成的文件名
+
 make 
 
-# 生成一个名为 学位论文写作指南及例子.pdf 的文件, 并且随着写作实时预览
+# 生成一个pdf, 并且随着写作实时预览
 # 可以在 makefile 中修改生成的文件名
 make watch
 ```
-
-# VSCode User
-按照当前目录下 `.vscode/settings.json` 文件中的选项来修改. **默认关闭**插件的实时预览功能.
-
-# 🏔️ 流水线构建
-可以在 `.github/workflows/ci.yml` 文件中修改流水线构建的配置. 比如流水线的名称, 触发条件, 构建命令等.
-
-## 当 Fork 本仓库后需要更改的事情
-如果不使用流水线的话, 可以忽略.
-1. 在 [nightly.link](https://nightly.link/) 中授权 Frok 后的仓库.
-2. 将流水线文件 `./github/workflows/ci.yml` 的 URL 复制到 nightly.link 链接中得到你的永久链接.
-3. 替换 README.md 文档中的链接.
-
-# 🎯 TODO
-[TodoList](https://github.com/qujihan/uestc-typst-thesis-example/issues/1)
-
-# 💬 微信交流群
-[欢迎加群讨论](https://github.com/qujihan/uestc-thesis-typst-template/issues/1)
 
 # 📜 License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
