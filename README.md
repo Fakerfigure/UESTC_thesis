@@ -9,7 +9,7 @@
 </div>
 
 
-# 📚电子科技大学学位论文Typst模板实例
+# 📚电子科技大学学位论文Typst模板实例-binbin
 [![下载最新版本](https://img.shields.io/badge/%E7%82%B9%E8%BF%99%E9%87%8C-%E4%B8%8B%E8%BD%BDrelease%E7%89%88%E6%9C%AC-red.svg "下载最新版本")](https://nightly.link/qujihan/uestc-typst-thesis-example/workflows/ci/main/thesis.zip)
 
 各位同学可以在本仓库的基础上进行修改.
